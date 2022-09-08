@@ -14,7 +14,7 @@ print()
 
 number = int(input('Введите число: '))
 
-while (number > 0) and (number < 10):
+while (number < 0) and (number > 10):
     number = int(input('Неверное число. Нужно в диапазоне от 0 до 10. Введите число: '))
 
 res = number**2
