@@ -5,11 +5,11 @@
 list_1 = [2, 5, 8, 2, 12, 12, 4]
 list_2 = [2, 7, 12, 3]
 
-set_1 = set(list_1)
-set_2 = set(list_2)
-set_result = set_1 - set_2
-list_3 = list(set_result)
-print(list_3)
+for value in list_1[:]:
+    if value in list_2:
+        list_1.remove(value)
+
+print(list_1)
 
 """
 Дана дата в формате dd.mm.yyyy, например: 02.11.2013. Ваша задача — вывести дату в текстовом виде, например: 
