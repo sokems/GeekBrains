@@ -97,7 +97,7 @@ except:
 
 """
 Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 2D пространстве.
-"""
+
 def distance_between_points(x1, y1, x2, y2):
     cathet_first = y1 - y2
     cathet_second = x1 - x2
@@ -111,6 +111,75 @@ y_coord_second = float(input('Введите координату Y второй
 
 print(f'Расстояние между точками ({x_coord_first}; {y_coord_first}) и ({x_coord_second}; {y_coord_second}) '
       f'равно {round(distance_between_points(x_coord_first, y_coord_first, x_coord_second, y_coord_second), 3)}')
+"""
 
+"""
+Напишите простой калькулятор, который считывает с пользовательского ввода три строки: первое число, второе число 
+и операцию, после чего применяет операцию к введённым числам ("первое число" "операция" "второе число") и выводит 
+результат на экран.
 
+Поддерживаемые операции: +, -, /, *, mod, pow, div, где
+mod — это взятие остатка от деления,
+pow — возведение в степень,
+div — целочисленное деление.
 
+Если выполняется деление и второе число равно 0, необходимо выводить строку "Деление на 0!".
+
+Обратите внимание, что на вход программе приходят вещественные числа.
+
+try:
+    def oper_plus(num_1, num_2):
+        return num_1 + num_2
+
+    def oper_minus(num_1, num_2):
+        return num_1 - num_2
+
+    def oper_div(num_1, num_2):
+        if num_2 != 0:
+            return num_1 / num_2
+        else:
+            return 'Деление на 0!'
+
+    def oper_multi(num_1, num_2):
+        return num_1 * num_2
+
+    def oper_mod(num_1, num_2):
+        return num_1 % num_2
+
+    def oper_pow(num_1, num_2):
+        return num_1 ** num_2
+
+    def oper_int_div(num_1, num_2):
+        if num_2 != 0:
+            return num_1 // num_2
+        else:
+            return 'Деление на 0!'
+
+    number_1 = float(input('Введите первое число: '))
+    operation = input('Введите операцию над числами: ')
+    number_2 = float(input('Введите второе число: '))
+
+    if operation == '+':
+        result = oper_plus(number_1, number_2)
+    elif operation == '-':
+        result = oper_minus(number_1, number_2)
+    elif operation == '/':
+        result = oper_div(number_1, number_2)
+    elif operation == '*':
+        result = oper_multi(number_1, number_2)
+    elif operation == 'mod':
+        result = oper_mod(number_1, number_2)
+    elif operation == 'pow':
+        result = oper_pow(number_1, number_2)
+    elif operation == 'div':
+        result = oper_int_div(number_1, number_2)
+
+    print(f'\n{number_1} {operation} {number_2} = {result}')
+
+except:
+    print('Некорректный ввод!')
+"""
+
+"""
+
+"""
