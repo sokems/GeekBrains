@@ -181,5 +181,40 @@ except:
 """
 
 """
-
+Задайте двумерный массив из целых чисел. Количество строк и столбцов задается с клавиатуры.
+Отсортировать элементы по возрастанию слева направо и сверху вниз.
 """
+
+def create_2d_array(row, column):
+    array = [[(int(input(f'Введите число с индексами ({i}: {j}): '))) for i in range(column)] for j in range(row)]
+    return array
+
+def sort_2d_array(array):
+    new_array = []
+    for i in range(len(array[0])):
+        for j in range(len(array)):
+            new_array.append(array[i][j])
+
+    k = 0
+    while k < len(new_array) - 1:
+        if new_array[k] > new_array[k + 1]:
+            temp = new_array[k]
+            new_array[k] = new_array[k + 1]
+            new_array[k + 1] = temp
+            k = 0
+        else:
+            k += 1
+
+    n = 0
+    for r in range(len(array[0])):
+        for c in range(len(array)):
+            array[r][c] = new_array[n]
+            n += 1
+
+    return array
+
+row = int(input('Введите количество строк в массиве: '))
+column = int(input('Введите количество столбцов в массиве: '))
+array = create_2d_array(row, column)
+
+print(f'Изначальный массив: {array}.\nОтсортированный массив: {sort_2d_array(array)}.')
