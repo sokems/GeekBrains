@@ -87,3 +87,43 @@
 от 5 до 25, проверяем это утверждение 100 раз, с помощью модуля time выводим на экран , сколько времени отработала 
 программа."""
 
+import random, time
+def convert_value_to_bool(num):
+    if num == 1:
+        return True
+    elif num == 0:
+        return False
+
+time_start = time.process_time()
+number = random.randint(5, 25)
+preds = []
+check = 0
+
+for n in range(100):
+    preds.append(convert_value_to_bool(random.randint(0, 1)))
+    begin_left = preds[0]
+    right = not preds[0]
+
+    for i in range(1, number):
+        preds.append(convert_value_to_bool(random.randint(0, 1)))
+
+        begin_left = begin_left or preds[i]
+        left = not begin_left
+        right = right and not preds[i]
+
+    print(preds)
+
+    if (left != right):
+        check = 1
+        break
+
+    preds.clear()
+
+if check == 0:
+    print('Удтверждение истинно.')
+else:
+    print('Удтверждение ложно.')
+
+time_end = time.process_time()
+time = time_end - time_start
+print(time)
