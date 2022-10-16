@@ -1,23 +1,30 @@
 """Задача 1. Напишите программу, которая принимает на вход вещественное или целое число и показывает сумму его цифр.
 Через строку нельзя решать."""
 
-# def sum_values(num):
-#     sum = 0
-#     current = 1
-#     check = (num % 10)
-#     while check != 0:
-#         check = (num % 10 ** current) // 10 ** (current - 1)
-#         sum += check
-#         current += 1
-#     return sum
-#
-# try:
-#     num = str(float(input('Введите число: ')))
-#     new_num = int(num.replace('.',''))
-#     print(f'Сумма цифр равна {sum_values(new_num)}')
-#
-# except:
-#     print('Введите число!')
+def sum_values(num):
+    sum = 0
+    current = 1
+    check = 1
+    if num % 10 != 0:
+        while check != 0:
+            check = (num % 10 ** current) // 10 ** (current - 1)
+            sum += check
+            current += 1
+    else:
+        current = 2
+        while check != 0:
+            check = (num % 10 ** current) // 10 ** (current - 1)
+            sum += check
+            current += 1
+    return sum
+
+try:
+    num = str(float(input('Введите число: ')))
+    new_num = int(num.replace('.',''))
+    print(f'Сумма цифр равна {sum_values(new_num)}')
+
+except:
+    print('Введите число!')
 
 """Задача 2. Напишите программу, которая принимает на вход число N и выдает набор произведений чисел от 1 до N."""
 
@@ -87,43 +94,43 @@
 от 5 до 25, проверяем это утверждение 100 раз, с помощью модуля time выводим на экран , сколько времени отработала 
 программа."""
 
-import random, time
-def convert_value_to_bool(num):
-    if num == 1:
-        return True
-    elif num == 0:
-        return False
-
-time_start = time.process_time()
-number = random.randint(5, 25)
-preds = []
-check = 0
-
-for n in range(100):
-    preds.append(convert_value_to_bool(random.randint(0, 1)))
-    begin_left = preds[0]
-    right = not preds[0]
-
-    for i in range(1, number):
-        preds.append(convert_value_to_bool(random.randint(0, 1)))
-
-        begin_left = begin_left or preds[i]
-        left = not begin_left
-        right = right and not preds[i]
-
-    print(preds)
-
-    if (left != right):
-        check = 1
-        break
-
-    preds.clear()
-
-if check == 0:
-    print('Удтверждение истинно.')
-else:
-    print('Удтверждение ложно.')
-
-time_end = time.process_time()
-time = time_end - time_start
-print(time)
+# import random, time
+# def convert_value_to_bool(num):
+#     if num == 1:
+#         return True
+#     elif num == 0:
+#         return False
+#
+# time_start = time.process_time()
+# number = random.randint(5, 25)
+# preds = []
+# check = 0
+#
+# for n in range(100):
+#     preds.append(convert_value_to_bool(random.randint(0, 1)))
+#     begin_left = preds[0]
+#     right = not preds[0]
+#
+#     for i in range(1, number):
+#         preds.append(convert_value_to_bool(random.randint(0, 1)))
+#
+#         begin_left = begin_left or preds[i]
+#         left = not begin_left
+#         right = right and not preds[i]
+#
+#     print(preds)
+#
+#     if (left != right):
+#         check = 1
+#         break
+#
+#     preds.clear()
+#
+# if check == 0:
+#     print('Удтверждение истинно.')
+# else:
+#     print('Удтверждение ложно.')
+#
+# time_end = time.process_time()
+# time = time_end - time_start
+# print(time)
