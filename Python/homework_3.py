@@ -143,63 +143,63 @@
 чтобы каждый гарантированно переместился на другое место и выполнить это за m*n / 2 итераций. То есть если массив три 
 на четыре, то надо выполнить не более 6 итераций. И далее в конце опять вывести на экран как таблицу."""
 
-import random
-
-def create_random_array(rows, columns):
-    if (rows * columns) % 2 == 0:
-        array = [[random.randint(10, 99) for i in range(columns)] for j in range(rows)]
-        return array
-    else:
-        print('Количество элементов нечетное.')
-        return exit()
-
-def show_2d_array(array):
-    string = ''
-    for i in range(len(array)):
-        for j in range(len(array[0])):
-            string += str(array[i][j]) + ' '
-        print(string)
-        string = ''
-
-def unsort_array(array):
-    list = []
-    for i in range(len(array)):
-        for j in range(len(array[0])):
-            temp = array[i][j]
-            list.append(temp)
-
-    index = []
-    for n in range(len(list)):
-        index.append(n)
-
-    size = index[-1]
-    for k in range(int((len(list) / 2))):
-        if k in index:
-            index.remove(k)
-            while True:
-                l = random.randint((size + 1) / 2, size)
-                if l in index:
-                    index.remove(l)
-                    temp = list[k]
-                    list[k] = list[l]
-                    list[l] = temp
-                    break
-    n = 0
-    for i in range(len(array)):
-        for j in range(len(array[0])):
-            array[i][j] = list[n]
-            n += 1
-
-    return array
-
-
-row = int(input('Введите количество строк: '))
-column = int(input('Введите количество столбцов: '))
-array = create_random_array(row, column)
-print()
-print(f'Исходный массив:')
-show_2d_array(array)
-print()
-new_array = unsort_array(array)
-print(f'Перемешаный:')
-show_2d_array(new_array)
+# import random
+#
+# def create_random_array(rows, columns):
+#     if (rows * columns) % 2 == 0:
+#         array = [[random.randint(10, 99) for i in range(columns)] for j in range(rows)]
+#         return array
+#     else:
+#         print('Количество элементов нечетное.')
+#         return exit()
+#
+# def show_2d_array(array):
+#     string = ''
+#     for i in range(len(array)):
+#         for j in range(len(array[0])):
+#             string += str(array[i][j]) + ' '
+#         print(string)
+#         string = ''
+#
+# def unsort_array(array):
+#     list = []
+#     for i in range(len(array)):
+#         for j in range(len(array[0])):
+#             temp = array[i][j]
+#             list.append(temp)
+#
+#     index = []
+#     for n in range(len(list)):
+#         index.append(n)
+#
+#     size = index[-1]
+#     for k in range(int((len(list) / 2))):
+#         if k in index:
+#             index.remove(k)
+#             while True:
+#                 l = random.randint((size + 1) / 2, size)
+#                 if l in index:
+#                     index.remove(l)
+#                     temp = list[k]
+#                     list[k] = list[l]
+#                     list[l] = temp
+#                     break
+#     n = 0
+#     for i in range(len(array)):
+#         for j in range(len(array[0])):
+#             array[i][j] = list[n]
+#             n += 1
+#
+#     return array
+#
+#
+# row = int(input('Введите количество строк: '))
+# column = int(input('Введите количество столбцов: '))
+# array = create_random_array(row, column)
+# print()
+# print(f'Исходный массив:')
+# show_2d_array(array)
+# print()
+# new_array = unsort_array(array)
+# print(f'Перемешаный:')
+# show_2d_array(new_array)
