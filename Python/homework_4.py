@@ -107,7 +107,7 @@
 #     values = []
 #     first_value = 0
 #     if user_string[0] == 'x':
-#         values.append(1)
+#         values.app+end(1)
 #         first_value = 1
 #     elif user_string[0:2] == '-x':
 #         values.append(-1)
