@@ -85,91 +85,91 @@
 
 -Добавьте возможность использования скобок, меняющих приоритет операций."""
 
-def convert_str_to_digit(str_user):
-    str_digit = str_user.replace(' ', '')
-    if str_digit[0] == '-':
-        str_digit = '0' + str_digit
-    str_digit = str_digit.replace('+', ' ').replace('-', ' ').replace('*', ' ').replace('/', ' ')
-    list_digit = str_digit.split(' ')
-
-    for i in range(len(list_digit)):
-        list_digit[i] = int(list_digit[i])
-
-    return list_digit
-
-def create_list_operations(str_user):
-    str_oper = str_user.replace(' ', '')
-    list_oper = []
-    for i in str_oper:
-        if i.isdigit():
-            i = ' '
-        else:
-            list_oper.append(i)
-
-    return list_oper
-
-def solution_example(list_digit, list_oper):
-    for n in range(len(list_digit)):
-        for i in range(len(list_oper)):
-            if list_oper[i] == '*':
-                list_digit[i] *= list_digit[i + 1]
-                del list_digit[i + 1]
-                del list_oper[i]
-                break
-
-        for i in range(len(list_oper)):
-            if list_oper[i] == '/':
-                list_digit[i] /= list_digit[i + 1]
-                del list_digit[i + 1]
-                del list_oper[i]
-                break
-
-        for i in range(len(list_oper)):
-            if list_oper[i] == '+' or list_oper[i] == '-':
-                if list_oper[i] == '+':
-                    list_digit[i] += list_digit[i + 1]
-                    del list_digit[i + 1]
-                    del list_oper[i]
-                    break
-                elif list_oper[i] == '-':
-                    list_digit[i] -= list_digit[i + 1]
-                    del list_digit[i + 1]
-                    del list_oper[i]
-                    break
-
-    return list_digit
-
-def remove_bracketed_expression(str_user):
-    bracketed_expression = ''
-    start_index = 0
-    end_index = 0
-    check = 1
-    str_new = ''
-    for i in range(len(str_user)):
-        if str_user[i] == '(':
-            start_index = i + 1
-            check = 0
-        elif str_user[i - 1] == ')':
-            end_index = i - 1
-            check = 1
-        if check == 1:
-            str_new += str_user[i]
-
-    bracketed_expression = str_user[start_index:end_index]
-    bracketed_expression_digit = convert_str_to_digit(bracketed_expression)
-    bracketed_expression_oper = create_list_operations(bracketed_expression)
-    result = solution_example(bracketed_expression_digit, bracketed_expression_oper)
-    str_new += str(result[0])
-    return str_new
-
-
-str_user = input('Введите пример: ')
-if '(' and ')' in str_user:
-    str_user = remove_bracketed_expression(str_user)
-list_digit = convert_str_to_digit(str_user)
-list_oper = create_list_operations(str_user)
-result = solution_example(list_digit, list_oper)
-print(f'{str_user} = {result[0]}')
+# def convert_str_to_digit(str_user):
+#     str_digit = str_user.replace(' ', '')
+#     if str_digit[0] == '-':
+#         str_digit = '0' + str_digit
+#     str_digit = str_digit.replace('+', ' ').replace('-', ' ').replace('*', ' ').replace('/', ' ')
+#     list_digit = str_digit.split(' ')
+#
+#     for i in range(len(list_digit)):
+#         list_digit[i] = int(list_digit[i])
+#
+#     return list_digit
+#
+# def create_list_operations(str_user):
+#     str_oper = str_user.replace(' ', '')
+#     list_oper = []
+#     for i in str_oper:
+#         if i.isdigit():
+#             i = ' '
+#         else:
+#             list_oper.append(i)
+#
+#     return list_oper
+#
+# def solution_example(list_digit, list_oper):
+#     for n in range(len(list_digit)):
+#         for i in range(len(list_oper)):
+#             if list_oper[i] == '*':
+#                 list_digit[i] *= list_digit[i + 1]
+#                 del list_digit[i + 1]
+#                 del list_oper[i]
+#                 break
+#
+#         for i in range(len(list_oper)):
+#             if list_oper[i] == '/':
+#                 list_digit[i] /= list_digit[i + 1]
+#                 del list_digit[i + 1]
+#                 del list_oper[i]
+#                 break
+#
+#         for i in range(len(list_oper)):
+#             if list_oper[i] == '+' or list_oper[i] == '-':
+#                 if list_oper[i] == '+':
+#                     list_digit[i] += list_digit[i + 1]
+#                     del list_digit[i + 1]
+#                     del list_oper[i]
+#                     break
+#                 elif list_oper[i] == '-':
+#                     list_digit[i] -= list_digit[i + 1]
+#                     del list_digit[i + 1]
+#                     del list_oper[i]
+#                     break
+#
+#     return list_digit
+#
+# def remove_bracketed_expression(str_user):
+#     bracketed_expression = ''
+#     start_index = 0
+#     end_index = 0
+#     check = 1
+#     str_new = ''
+#     for i in range(len(str_user)):
+#         if str_user[i] == '(':
+#             start_index = i + 1
+#             check = 0
+#         elif str_user[i - 1] == ')':
+#             end_index = i - 1
+#             check = 1
+#         if check == 1:
+#             str_new += str_user[i]
+#
+#     bracketed_expression = str_user[start_index:end_index]
+#     bracketed_expression_digit = convert_str_to_digit(bracketed_expression)
+#     bracketed_expression_oper = create_list_operations(bracketed_expression)
+#     result = solution_example(bracketed_expression_digit, bracketed_expression_oper)
+#     str_new += str(result[0])
+#     return str_new
+#
+#
+# str_user = input('Введите пример: ')
+# if '(' and ')' in str_user:
+#     str_user = remove_bracketed_expression(str_user)
+# list_digit = convert_str_to_digit(str_user)
+# list_oper = create_list_operations(str_user)
+# result = solution_example(list_digit, list_oper)
+# print(f'{str_user} = {result[0]}')
 
 
 """Задача FOOTBALL необязательная: Напишите программу, которая принимает на стандартный вход список игр футбольных 
@@ -200,3 +200,54 @@ Sample Output:
 Спартак:2 0 0 2 0
 Зенит:2 1 0 1 3
 Локомотив:2 2 0 0 6"""
+
+try:
+    count_game = int(input('Введите количество игр: '))
+    games = []
+    teams = []
+    for g in range(count_game):
+        game = input('Введите результат игры в формате "Команда1;Забито_голов;Команда2;Забито_голов": ')
+        games.append(game.split(';'))
+
+    for g in games:
+        for t in g:
+            if not t.isdigit():
+                if not t in teams:
+                    teams.append(t)
+
+    res = {}
+    for i in range(len(teams)):
+        a = ''
+        team = teams[i]
+        res[team] = a.split()
+
+    for v in res.keys():
+        res[v] = [0, 0, 0, 0, 0]
+
+    for g in games:
+        team_1 = res[g[0]]
+        team_2 = res[g[2]]
+        team_1[0] += 1
+        team_2[0] += 1
+        if int(g[1]) > int(g[3]):
+            team_1[1] += 1
+            team_2[3] += 1
+        elif int(g[1]) < int(g[3]):
+            team_2[1] += 1
+            team_1[3] += 1
+        else:
+            team_2[2] += 1
+            team_1[2] += 1
+        res[g[0]] = team_1
+        res[g[2]] = team_2
+
+    for v in res.keys():
+        points = res[v]
+        points[4] = points[1] * 3 + points[2]
+
+    print()
+    for t in res.keys():
+        print(f'{t}: {res[t]}')
+
+except:
+    print('Некорректный ввод!')
