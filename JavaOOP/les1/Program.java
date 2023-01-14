@@ -15,7 +15,7 @@ import vehicles.*;
 
 public class Program {
     public static void main(String[] args) {
-        Vehicle car = new Car("red", "BMW", 4, 1500, 240);
+        Vehicle car = new Car("red", "BMW", 4, 1500, 240, "92");
         Vehicle bike = new Bike("blue", "Yamaha", 2, 500, 300);
         Vehicle lorry = new Lorry("yellow", "Mersedes", 4, 3500, 100);
         Vehicle bicycle = new Bicycle("green", "Stels", 2, 10, 30);
